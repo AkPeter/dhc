@@ -1,2 +1,8 @@
 set :stage, :production
-server '46.101.131.48', user: 'deploy', roles: %w{web app}
+set :app_environment, "production"
+
+set :ssh_options, { forward_agent: true, port: 22 }
+set :branch, 'master'
+set :deploy_to, '/home/deploy'
+
+server '46.101.131.48', user: 'deploy', roles: %w{web app db}

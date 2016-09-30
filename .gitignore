@@ -10,7 +10,6 @@
 /config/puma.rb
 .idea/*
 /log/*
-/Gemfile.lock
 /shared/log
 /shared/pids
 /tmp/
