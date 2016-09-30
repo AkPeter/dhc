@@ -2,7 +2,7 @@
 lock '3.6.1'
 
 set :application, 'dhc'
-set :repo_url, 'git@github.com:akpeter/dhc.git'
+set :repo_url, 'https://github.com/AkPeter/dhc.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
@@ -60,7 +60,7 @@ namespace :deploy do
   end
 
   # maybe
-  # after :publishing, 'deploy:restart'
-  # after :finishing, 'deploy:cleanup'
+  after :publishing, 'deploy:restart'
+  after :finishing, 'deploy:cleanup'
 
 end
