@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title = content_for?(:title) ? yield(:title) : 'Living Space One - Комфортные квартиры в аренду'
+    meta name="keywords" content="комфортная квартира аренда москва от 35000"
+    = stylesheet_link_tag "application", :media => "all", 'data-turbolinks-track' => true
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = action_cable_meta_tag
+
+  body
+    .container-fluid
+      .container-fixed
+        .main-container
+          main role="main"
+            == yield
