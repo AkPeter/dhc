@@ -115,3 +115,6 @@ gem 'simple_form'
 
 # user permission
 gem 'cancancan'
+
+# auth user
+gem 'devise'

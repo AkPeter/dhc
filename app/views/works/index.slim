@@ -1,0 +1,10 @@
+.cols
+  - @works.each do |work|
+    .col-12
+      p
+        = work.user.username
+      h2
+        = link_to work_path(work.id)
+          = work.title
+      p
+        = work.content
