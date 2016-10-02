@@ -4,7 +4,19 @@
       p
         = work.user.username
       h2
-        = link_to work_path(work.id)
-          = work.title
+        = link_to work.title, work_path(work)
       p
         = work.content
+      - if user_signed_in?
+        p
+          - if (current_user == work.user) & current_user.editor?
+            = link_to 'Редактировать', edit_work_path(work)
+          - elsif (current_user == work.user) & current_user.admin?
+            = link_to 'Редактировать', edit_work_path(work)
+          - elsif (current_user != work.user) & current_user.admin?
+            = link_to 'Редактировать', edit_work_path(work)
+        span
+          - if (current_user == work.user) & current_user.admin?
+            = link_to('Удалить', work_path(work), data: { confirm: 'Уверены?' }, method: :delete)
+          - elsif (current_user != work.user) & current_user.admin?
+            = link_to('Удалить', work_path(work), data: { confirm: 'Уверены?' }, method: :delete)
