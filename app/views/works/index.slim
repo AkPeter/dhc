@@ -9,14 +9,8 @@
         = work.content
       - if user_signed_in?
         p
-          - if (current_user == work.user) & current_user.editor?
-            = link_to 'Редактировать', edit_work_path(work)
-          - elsif (current_user == work.user) & current_user.admin?
-            = link_to 'Редактировать', edit_work_path(work)
-          - elsif (current_user != work.user) & current_user.admin?
+          - if (((current_user == work.user) & current_user.editor?) || ((current_user == work.user) & current_user.admin?) || ((current_user != work.user) & current_user.admin?))
             = link_to 'Редактировать', edit_work_path(work)
         span
-          - if (current_user == work.user) & current_user.admin?
-            = link_to('Удалить', work_path(work), data: { confirm: 'Уверены?' }, method: :delete)
-          - elsif (current_user != work.user) & current_user.admin?
+          - if (((current_user == work.user) & current_user.admin?) || ((current_user != work.user) & current_user.admin?))
             = link_to('Удалить', work_path(work), data: { confirm: 'Уверены?' }, method: :delete)
